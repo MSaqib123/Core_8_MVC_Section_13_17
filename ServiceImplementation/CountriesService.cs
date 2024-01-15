@@ -13,7 +13,11 @@ namespace ServiceImplementation
         }
         public CountryResponse AddCountry(CountryAddRequest? countryAddRequest)
         {
-            //return new CountryResponse() { CountryName = countryAddRequest.CountryName };
+            //=== Null Validation ===
+            if (countryAddRequest == null)
+            {
+                throw new ArgumentNullException(nameof(countryAddRequest));
+            }
 
             //convert CountryRequest to Country Object
             Country country = countryAddRequest.ToCountry();
