@@ -7,7 +7,7 @@ namespace ServiceImplementation
     {
         public CountryResponse AddCountry(CountryAddRequest? countryAddRequest)
         {
-            throw new NotImplementedException();
+            return new CountryResponse() { CountryName = countryAddRequest.CountryName };
         }
     }
 }
