@@ -147,9 +147,9 @@ namespace Config_to_EntityFrameworkCore.Controllers
         #endregion
 
 
-        //=================
+        //===================
         //---- class 6 ------
-        //=================
+        //===================
         #region Enviroment_Specific_configuration
         //_______ Note Enviremnt base Service Like ________
         //1. ager Envirment=Development ha to ----> to Development ke Configration work kraa ge
@@ -174,7 +174,6 @@ namespace Config_to_EntityFrameworkCore.Controllers
             return View();
         }
         #endregion
-
 
 
         //===================
