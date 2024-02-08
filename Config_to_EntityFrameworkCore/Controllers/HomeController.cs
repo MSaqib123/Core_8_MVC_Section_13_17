@@ -4,11 +4,11 @@ namespace Config_to_EntityFrameworkCore.Controllers
 {
     public class HomeController:Controller
     {
-        [Route("/")]
-        public IActionResult Index()
-        {
-            return View();
-        }
+        //[Route("/")]
+        //public IActionResult Index()
+        //{
+        //    return View();
+        //}
 
         //=========================================================================
         //========================== Section = Envirment ==========================
