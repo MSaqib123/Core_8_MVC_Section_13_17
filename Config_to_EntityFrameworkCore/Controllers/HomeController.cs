@@ -71,14 +71,17 @@ namespace Config_to_EntityFrameworkCore.Controllers
         [Route("/")]
         public IActionResult Index()
         {
-            //__________ 1st way _________
-            ViewBag.MyKey1 = _configuration["MyKey"];
+            //__________ 1st way Herarchical _________
+            ViewBag.MyKey1 = _configuration["Herarchial:Key1"];
+            ViewBag.MyKey2 = _configuration.GetValue<string>("Herarchial:Key2");
+            ViewBag.MyKey3 = _configuration.GetValue("Herarchial:Key3", "India Lost");
 
-            //__________ 2nd way _________
-            ViewBag.MyKey2 = _configuration.GetValue<string>("MyKey");
+            //__________ 2nd way Herarchical _________
+            ViewBag.MyKey4 = _configuration.GetSection("Herarchial")["Key1"];
 
-            //__________ 3rd way _________
-            ViewBag.MyKey3 = _configuration.GetValue("MyKeyss", "Pakistan");
+            //__________ 3rd way Herarchical _________
+            IConfiguration config = _configuration.GetSection("Herarchial");
+            ViewBag.MyKey5 = config["Key2"];
 
             return View();
         }
