@@ -7,7 +7,7 @@ app.UseRouting();
 
 app.UseEndpoints(endP =>
 {
-    endP.Map("/", async context =>
+    endP.Map("/ConfigurationInProgram", async context =>
     {
         //___________ 1. Way 1 Getting Value from appsettng.JSON______
         string s1 = app.Configuration["MyKey"];

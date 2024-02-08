@@ -4,12 +4,6 @@ namespace Config_to_EntityFrameworkCore.Controllers
 {
     public class HomeController:Controller
     {
-        //[Route("/")]
-        //public IActionResult Index()
-        //{
-        //    return View();
-        //}
-
         //=========================================================================
         //========================== Section = Envirment ==========================
         //=========================================================================
@@ -26,11 +20,6 @@ namespace Config_to_EntityFrameworkCore.Controllers
         #endregion
 
 
-        //=========================================================================
-        //========================== Section = Configuration (Importent) ==========================
-        //=========================================================================
-        #region Configuration_in_ProgramFile
-        //Please go to program file
-        #endregion
+        
     }
 }
