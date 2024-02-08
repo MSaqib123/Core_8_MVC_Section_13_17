@@ -24,18 +24,17 @@ namespace Config_to_EntityFrameworkCore.Controllers
         //=========================================================================
         //========================== Section = Configuration (Importent) ==========================
         //=========================================================================
-
-
         #region Configuration
         //=================
         //---- class 1 ----
         //=================
         //Please go to program file
 
+
         //=================
         //---- class 2 ----
         //=================
-        #region class2
+        #region class2   GetValue with Controller
         //by controller DI
         //private readonly IConfiguration _configuration;
         //public HomeController(IConfiguration configuration)
@@ -57,15 +56,13 @@ namespace Config_to_EntityFrameworkCore.Controllers
         //    return View();
         //}
 
-
         #endregion
+
 
         //=================
         //---- class 3 ------
         //=================
-        #region 
-
-        #endregion
+        #region Class 3  (Herarchical Config Values)
         private readonly IConfiguration _configuration;
         public HomeController(IConfiguration configuration)
         {
@@ -87,10 +84,6 @@ namespace Config_to_EntityFrameworkCore.Controllers
         }
         #endregion
 
-        #region Configuration_byController
-
         #endregion
-
-
     }
 }
