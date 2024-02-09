@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Config_to_EntityFrameworkCore.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Config_to_EntityFrameworkCore.Controllers
 {
@@ -100,8 +101,12 @@ namespace Config_to_EntityFrameworkCore.Controllers
         [Route("/")]
         public IActionResult Index()
         {
-            //__________ 1st way Herarchical _________
-            ViewBag.MyKey1 = _configuration["Herarchial:Key1"];
+            //__________ 1st way push json to model _________
+            ModelBaseJson json = _configuration.GetSection("ModelBaseJson").Get<ModelBaseJson>();
+            ViewBag.Key1 = json.Key1;
+            ViewBag.SecrtKey2 = json.SecrtKey2;
+            ViewBag.logicKey3 = json.logicKey3;
+            ViewBag.valueKey4 = json.valueKey4;
 
             return View();
         }
