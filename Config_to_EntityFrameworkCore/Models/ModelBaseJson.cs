@@ -6,5 +6,7 @@
         public string? SecrtKey2 { get; set; }
         public string? logicKey3 { get; set; }
         public int? valueKey4 { get; set; }
+
+        public string? UserSecret { get; set; }
     }
 }
