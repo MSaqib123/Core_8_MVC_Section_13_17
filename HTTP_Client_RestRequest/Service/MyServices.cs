@@ -20,6 +20,11 @@ namespace HTTP_Client_RestRequest.Service
                     Method = HttpMethod.Get,
                 };
                 HttpResponseMessage httpResponseMessage = await httpClient.SendAsync(httpRequestMessage);
+
+                Stream stream = httpResponseMessage.Content.ReadAsStream();
+                StreamReader streamRead = new StreamReader(stream);
+
+                string response = streamRead.ReadToEnd();
             }
         }
     }
