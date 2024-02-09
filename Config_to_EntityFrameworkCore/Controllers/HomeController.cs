@@ -126,26 +126,33 @@ namespace Config_to_EntityFrameworkCore.Controllers
         //=================
         //---- class 5 ------ Using Registered Services Values
         //=================
-        #region Injecting directly to ProgramFile and bind
+        #region (Configuration Service) Injecting directly to ProgramFile and bind
         //
-        private readonly ModelBaseJson _jsonValue;
-        public HomeController(IOptions<ModelBaseJson> jsonValue)
-        {
-            _jsonValue = jsonValue.Value;
-        }
-        [Route("/")]
-        public IActionResult Index()
-        {
-            //__________ 1st way push json to model _________
-            ViewBag.Key1 = _jsonValue.Key1;
-            ViewBag.SecrtKey2 = _jsonValue.SecrtKey2;
-            ViewBag.logicKey3 = _jsonValue.logicKey3;
-            ViewBag.valueKey4 = _jsonValue.valueKey4;
+        //private readonly ModelBaseJson _jsonValue;
+        //public HomeController(IOptions<ModelBaseJson> jsonValue)
+        //{
+        //    _jsonValue = jsonValue.Value;
+        //}
+        //[Route("/")]
+        //public IActionResult Index()
+        //{
+        //    //__________ 1st way push json to model _________
+        //    ViewBag.Key1 = _jsonValue.Key1;
+        //    ViewBag.SecrtKey2 = _jsonValue.SecrtKey2;
+        //    ViewBag.logicKey3 = _jsonValue.logicKey3;
+        //    ViewBag.valueKey4 = _jsonValue.valueKey4;
 
-            return View();
-        }
+        //    return View();
+        //}
         #endregion
 
+
+        //=================
+        //---- class 6 ------
+        //=================
+        #region 
+
+        #endregion
 
         #endregion
     }
