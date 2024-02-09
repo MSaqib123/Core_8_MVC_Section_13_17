@@ -1,3 +1,13 @@
 {
-
+  "Herarchial": {
+    "Key1": "customSetting. Pakistan Lost",
+    "Key2": "customSetting. Pakistan Won",
+    "Key3": "customSetting. Pakistan Lost,Won"
+  },
+  "ModelBaseJson": {
+    "Key1": "customSetting. value1",
+    "SecrtKey2": "customSetting. value2",
+    "logicKey3": "customSetting. value3",
+    "valueKey4": 234
+  }
 }

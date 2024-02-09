@@ -12,6 +12,15 @@ builder.Services.Configure<ModelBaseJson>(
   );
 #endregion
 
+//===================
+//---- class 9 ------
+//===================
+#region Creating custom Configuration_Setting_Files
+builder.Host.ConfigureAppConfiguration((hostingContext, config) =>
+{
+    config.AddJsonFile("customConfiguration.json", optional: true, reloadOnChange: true);
+});
+#endregion
 
 var app = builder.Build();
 app.UseStaticFiles();

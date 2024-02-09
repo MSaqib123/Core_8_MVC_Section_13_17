@@ -241,7 +241,19 @@ namespace Config_to_EntityFrameworkCore.Controllers
         //1. Create  Json File with Desired name
         //2. Registed and Add   New JSon File as Configuration in Program.cs
 
-
+        private readonly ModelBaseJson _jsonValue;
+        public HomeController(IOptions<ModelBaseJson> jsonValue)
+        {
+            _jsonValue = jsonValue.Value;
+        }
+        [Route("/")]
+        public IActionResult Index()
+        {
+            ViewBag.Key1 = _jsonValue.Key1;
+            ViewBag.SecrtKey2 = _jsonValue.SecrtKey2;
+            ViewBag.logicKey3 = _jsonValue.logicKey3;
+            return View();
+        }
         #endregion
 
         #endregion
