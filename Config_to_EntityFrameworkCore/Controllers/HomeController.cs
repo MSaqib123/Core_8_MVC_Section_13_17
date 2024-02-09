@@ -218,17 +218,30 @@ namespace Config_to_EntityFrameworkCore.Controllers
         //2. $Env:ParentKey__ChildKey="value"
         //3. dotnet run --no-launch-profile
 
-        private readonly ModelBaseJson _jsonValue;
-        public HomeController(IOptions<ModelBaseJson> jsonValue)
-        {
-            _jsonValue = jsonValue.Value;
-        }
-        [Route("/")]
-        public IActionResult Index()
-        {
-            ViewBag.Key1 = _jsonValue.Key1;
-            return View();
-        }
+        //private readonly ModelBaseJson _jsonValue;
+        //public HomeController(IOptions<ModelBaseJson> jsonValue)
+        //{
+        //    _jsonValue = jsonValue.Value;
+        //}
+        //[Route("/")]
+        //public IActionResult Index()
+        //{
+        //    ViewBag.Key1 = _jsonValue.Key1;
+        //    return View();
+        //}
+        #endregion
+
+
+        //===================
+        //---- class 9 ------
+        //===================
+        #region Creating Differnt  Configuration Setting Files
+        //In larger Project we seprate the Configuration setting 
+        //____ steps _____
+        //1. Create  Json File with Desired name
+        //2. Registed and Add   New JSon File as Configuration in Program.cs
+
+
         #endregion
 
         #endregion
