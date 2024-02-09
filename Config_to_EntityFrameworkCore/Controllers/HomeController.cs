@@ -157,22 +157,22 @@ namespace Config_to_EntityFrameworkCore.Controllers
         //3. ager Envirment = Production .....
 
         //=== chenge envirm from launchsettting.json ===
-        private readonly ModelBaseJson _jsonValue;
-        public HomeController(IOptions<ModelBaseJson> jsonValue)
-        {
-            _jsonValue = jsonValue.Value;
-        }
-        [Route("/")]
-        public IActionResult Index()
-        {
-            //__________ 1st way push json to model _________
-            ViewBag.Key1 = _jsonValue.Key1;
-            ViewBag.SecrtKey2 = _jsonValue.SecrtKey2;
-            ViewBag.logicKey3 = _jsonValue.logicKey3;
-            ViewBag.valueKey4 = _jsonValue.valueKey4;
+        //private readonly ModelBaseJson _jsonValue;
+        //public HomeController(IOptions<ModelBaseJson> jsonValue)
+        //{
+        //    _jsonValue = jsonValue.Value;
+        //}
+        //[Route("/")]
+        //public IActionResult Index()
+        //{
+        //    //__________ 1st way push json to model _________
+        //    ViewBag.Key1 = _jsonValue.Key1;
+        //    ViewBag.SecrtKey2 = _jsonValue.SecrtKey2;
+        //    ViewBag.logicKey3 = _jsonValue.logicKey3;
+        //    ViewBag.valueKey4 = _jsonValue.valueKey4;
 
-            return View();
-        }
+        //    return View();
+        //}
         #endregion
 
 
@@ -192,12 +192,26 @@ namespace Config_to_EntityFrameworkCore.Controllers
         //--- 1. Issue  ----
         //for live  Deplyment this thing will not work for this .  Azure to buy.
 
+        private readonly ModelBaseJson _jsonValue;
+        public HomeController(IOptions<ModelBaseJson> jsonValue)
+        {
+            _jsonValue = jsonValue.Value;
+        }
+        [Route("/")]
+        public IActionResult Index()
+        {
+            //__________ 1st way push json to model _________
+            ViewBag.Key1 = _jsonValue.Key1;
+            ViewBag.SecrtKey2 = _jsonValue.SecrtKey2;
+            ViewBag.logicKey3 = _jsonValue.logicKey3;
+            ViewBag.valueKey4 = _jsonValue.valueKey4;
+
+            return View();
+        }
         #endregion
 
 
-        //===================
-        //---- class 8 ------
-        //===================
+     
 
         #endregion
     }
