@@ -1,5 +1,17 @@
+using Config_to_EntityFrameworkCore.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
+
+//===================
+//---- class 5 ------
+//===================
+#region Registring Configuration Model in Program.cs
+builder.Services.Configure<ModelBaseJson>(
+    builder.Configuration.GetSection("ModelBaseJson")
+  );
+#endregion
+
 
 var app = builder.Build();
 app.UseStaticFiles();
