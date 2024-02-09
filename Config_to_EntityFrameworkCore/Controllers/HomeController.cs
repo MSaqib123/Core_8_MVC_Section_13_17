@@ -90,9 +90,9 @@ namespace Config_to_EntityFrameworkCore.Controllers
         #endregion
 
 
-        //=================
+        //===================
         //---- class 4 ------
-        //=================
+        //===================
         #region Class 4  (Getting appsetting by Model (Options Pattern)) very importent
         //private readonly IConfiguration _configuration;
         //public HomeController(IConfiguration configuration)
@@ -173,6 +173,26 @@ namespace Config_to_EntityFrameworkCore.Controllers
 
             return View();
         }
+        #endregion
+
+
+
+        //===================
+        //---- class 7 ------
+        //===================
+        #region Secret Manager
+        //Our key are Secret thing so  we make these in SecretManger
+
+        //1. dotnet user-secrets init
+        //2. dotnet user-secrets set "Key" "value"
+        //3. dotnet user-secrets list
+
+        //These file is create in  --=> Computer  C://User
+        //Right click on project  click on  ((_Manager User SEcrets_))
+
+        //--- 1. Issue  ----
+        //for live  Deplyment this thing will not work for this .  Azure to buy.
+
         #endregion
 
 
