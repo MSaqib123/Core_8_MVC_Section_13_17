@@ -108,6 +108,15 @@ namespace Config_to_EntityFrameworkCore.Controllers
             ViewBag.logicKey3 = json.logicKey3;
             ViewBag.valueKey4 = json.valueKey4;
 
+            //__________ 2nd way push json to model _________
+            ModelBaseJson json2ndWay = new ModelBaseJson();
+            _configuration.GetSection("ModelBaseJson").Bind(json2ndWay);
+
+            ViewBag.cKey1 = json2ndWay.Key1;
+            ViewBag.cSecrtKey2 = json2ndWay.SecrtKey2;
+            ViewBag.clogicKey3 = json2ndWay.logicKey3;
+            ViewBag.cvalueKey4 = json2ndWay.valueKey4;
+
             return View();
         }
         #endregion
