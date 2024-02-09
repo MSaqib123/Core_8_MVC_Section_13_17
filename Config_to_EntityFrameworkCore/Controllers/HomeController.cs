@@ -150,9 +150,31 @@ namespace Config_to_EntityFrameworkCore.Controllers
         //=================
         //---- class 6 ------
         //=================
-        #region 
+        #region Enviroment_Specific_configuration
+        //_______ Note Enviremnt base Service Like ________
+        //1. ager Envirment=Development ha to ----> to Development ke Configration work kraa ge
+        //2. ager Envirmet = staging ha .......
+        //3. ager Envirment = Production .....
 
+        //=== chenge envirm from launchsettting.json ===
+        private readonly ModelBaseJson _jsonValue;
+        public HomeController(IOptions<ModelBaseJson> jsonValue)
+        {
+            _jsonValue = jsonValue.Value;
+        }
+        [Route("/")]
+        public IActionResult Index()
+        {
+            //__________ 1st way push json to model _________
+            ViewBag.Key1 = _jsonValue.Key1;
+            ViewBag.SecrtKey2 = _jsonValue.SecrtKey2;
+            ViewBag.logicKey3 = _jsonValue.logicKey3;
+            ViewBag.valueKey4 = _jsonValue.valueKey4;
+
+            return View();
+        }
         #endregion
+
 
         #endregion
     }
