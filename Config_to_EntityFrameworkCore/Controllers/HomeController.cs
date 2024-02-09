@@ -63,6 +63,35 @@ namespace Config_to_EntityFrameworkCore.Controllers
         //---- class 3 ------
         //=================
         #region Class 3  (Herarchical Config Values)
+        //private readonly IConfiguration _configuration;
+        //public HomeController(IConfiguration configuration)
+        //{
+        //    _configuration = configuration;
+        //}
+        //[Route("/")]
+        //public IActionResult Index()
+        //{
+        //    //__________ 1st way Herarchical _________
+        //    ViewBag.MyKey1 = _configuration["Herarchial:Key1"];
+        //    ViewBag.MyKey2 = _configuration.GetValue<string>("Herarchial:Key2");
+        //    ViewBag.MyKey3 = _configuration.GetValue("Herarchial:Key3", "India Lost");
+
+        //    //__________ 2nd way Herarchical _________
+        //    ViewBag.MyKey4 = _configuration.GetSection("Herarchial")["Key1"];
+
+        //    //__________ 3rd way Herarchical _________
+        //    IConfiguration config = _configuration.GetSection("Herarchial");
+        //    ViewBag.MyKey5 = config["Key2"];
+
+        //    return View();
+        //}
+        #endregion
+
+
+        //=================
+        //---- class 4 ------
+        //=================
+        #region Class 4  (Getting appsetting by Model (Options Pattern)) very importent
         private readonly IConfiguration _configuration;
         public HomeController(IConfiguration configuration)
         {
@@ -73,15 +102,6 @@ namespace Config_to_EntityFrameworkCore.Controllers
         {
             //__________ 1st way Herarchical _________
             ViewBag.MyKey1 = _configuration["Herarchial:Key1"];
-            ViewBag.MyKey2 = _configuration.GetValue<string>("Herarchial:Key2");
-            ViewBag.MyKey3 = _configuration.GetValue("Herarchial:Key3", "India Lost");
-
-            //__________ 2nd way Herarchical _________
-            ViewBag.MyKey4 = _configuration.GetSection("Herarchial")["Key1"];
-
-            //__________ 3rd way Herarchical _________
-            IConfiguration config = _configuration.GetSection("Herarchial");
-            ViewBag.MyKey5 = config["Key2"];
 
             return View();
         }
