@@ -6,9 +6,11 @@ namespace HTTP_Client_RestRequest.Service
     public class MyServices : IMyServices
     {
         private readonly IHttpClientFactory _httpClientFactory;
-        public MyServices(IHttpClientFactory httpClientFactory)
+        private readonly IConfiguration _configuration;
+        public MyServices(IHttpClientFactory httpClientFactory,IConfiguration configuration)
         {
             _httpClientFactory = httpClientFactory;
+            _configuration = configuration;
         }
 
         public async Task<Dictionary<string, object>> getStrockPriceQuote(string stockSymbol)
