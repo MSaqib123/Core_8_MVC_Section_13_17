@@ -1,10 +1,10 @@
 ﻿namespace Entities
 {
-    public class Countries
+    /// <summary>
+    /// Domain Model for storing Country Data
+    /// </summary>
+    public class Country
     {
-        /// <summary>
-        /// Domain Model for storing Country Data
-        /// </summary>
         public Guid CountryId { get; set; }
         public string CountryName { get; set; }
         //We do not  show Domain Model to  Controller  not in argument not in return
