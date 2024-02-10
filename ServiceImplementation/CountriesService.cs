@@ -21,7 +21,7 @@ namespace ServiceImplementation
             //=== 2. Null Name Validation ===
             if (countryAddRequest.CountryName == null)
             {
-                throw new ArgumentException(nameof(countryAddRequest.CountryName.ToString()));
+                throw new ArgumentException(nameof(countryAddRequest.CountryName));
             }
             //=== 2. dublicate Validation ===
             if (_countries.Where(temp=>temp.CountryName == countryAddRequest.CountryName).Count() > 0)
