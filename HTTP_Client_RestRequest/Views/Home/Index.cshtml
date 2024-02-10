@@ -1,8 +1,17 @@
-﻿@{
+﻿@model StockUpdate
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">StockUpdate</h1>
+    <div class="card">
+        <h3>@Model.StockSymbol</h3>
+        <div>
+            <p><b>@Model.HighestPrice</b></p>
+            <p><b>@Model.LowesPrice</b></p>
+            <p><b>@Model.CurrentPrice</b></p>
+            <p><b>@Model.OpenPrice</b></p>
+        </div>
+    </div>
 </div>

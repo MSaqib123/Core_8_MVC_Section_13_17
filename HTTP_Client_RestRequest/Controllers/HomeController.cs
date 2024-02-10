@@ -19,8 +19,23 @@ namespace HTTP_Client_RestRequest.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var response = await _service.getStrockPriceQuote(_configuration.Value.DfaultStockSymbol);
-            return View();
+            string symbol = _configuration.Value.DfaultStockSymbol?? "MSFT";
+            Dictionary<string,object> response = await _service.getStrockPriceQuote(symbol);
+
+            StockUpdate stockP = new StockUpdate();
+            stockP.StockSymbol = symbol;
+            var c = response["c"];
+            var h = response["h"];
+            var l = response["l"];
+            var o = response["o"];
+
+            stockP.CurrentPrice = c.ToString();
+            stockP.HighestPrice = h.ToString();
+            stockP.LowesPrice = l.ToString();
+            stockP.OpenPrice = o.ToString();
+
+
+            return View(stockP);
         }
 
         public IActionResult Privacy()
