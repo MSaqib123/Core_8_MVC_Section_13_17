@@ -21,12 +21,12 @@ namespace ServiceImplementation
             //=== 2. Null Name Validation ===
             if (countryAddRequest.CountryName == null)
             {
-                throw new ArgumentException(nameof(countryAddRequest.CountryName));
+                throw new ArgumentNullException(nameof(countryAddRequest.CountryName));
             }
             //=== 2. dublicate Validation ===
             if (_countries.Where(temp=>temp.CountryName == countryAddRequest.CountryName).Count() > 0)
             {
-                throw new ArgumentException("Given CountryName alredy Exist in Table");
+                throw new ArgumentNullException("Given CountryName alredy Exist in Table");
             }
 
             //convert CountryRequest to Country Object
