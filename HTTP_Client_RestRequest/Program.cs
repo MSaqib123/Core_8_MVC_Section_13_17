@@ -1,3 +1,4 @@
+using HTTP_Client_RestRequest.Models;
 using HTTP_Client_RestRequest.Service;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +10,7 @@ builder.Services.AddControllersWithViews();
 //==================
 builder.Services.AddHttpClient();
 builder.Services.AddScoped<MyServices, MyServices>();
+//builder.Services.Configure<FinnhubConfiguration>
 
 
 var app = builder.Build();

@@ -19,7 +19,7 @@ namespace HTTP_Client_RestRequest.Service
             {
                 HttpRequestMessage httpRequestMessage = new HttpRequestMessage()
                 {
-                    RequestUri = new Uri($"https://finnhub.io/api/v1/quote?symbol={stockSymbol}&token=cn378f9r01qtdiertrtgcn378f9r01qtdiertru0"),
+                    RequestUri = new Uri($"https://finnhub.io/api/v1/quote?symbol={stockSymbol}&token={_configuration["FinnhubToken"]}"),
                     Method = HttpMethod.Get,
                 };
                 HttpResponseMessage httpResponseMessage = await httpClient.SendAsync(httpRequestMessage);
