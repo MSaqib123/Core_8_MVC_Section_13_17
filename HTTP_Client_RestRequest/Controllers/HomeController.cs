@@ -16,7 +16,7 @@ namespace HTTP_Client_RestRequest.Controllers
 
         public async Task<IActionResult> Index()
         {
-            await _service.method();
+            var response = await _service.getStrockPriceQuote("AAPL");
             return View();
         }
 

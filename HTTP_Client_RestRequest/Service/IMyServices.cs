@@ -2,6 +2,6 @@
 {
     public interface IMyServices
     {
-        Task<Dictionary<string, object>> getStrockPriceQuote();
+        Task<Dictionary<string, object>> getStrockPriceQuote(string stockSymbol);
     }
 }

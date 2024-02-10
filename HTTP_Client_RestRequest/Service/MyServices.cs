@@ -11,13 +11,13 @@ namespace HTTP_Client_RestRequest.Service
             _httpClientFactory = httpClientFactory;
         }
 
-        public async Task<Dictionary<string, object>> getStrockPriceQuote()
+        public async Task<Dictionary<string, object>> getStrockPriceQuote(string stockSymbol)
         {
             using (HttpClient httpClient = _httpClientFactory.CreateClient())
             {
                 HttpRequestMessage httpRequestMessage = new HttpRequestMessage()
                 {
-                    RequestUri = new Uri("https://finnhub.io/api/v1/quote?symbol=AAPL&token=cn378f9r01qtdiertrtgcn378f9r01qtdiertru0"),
+                    RequestUri = new Uri($"https://finnhub.io/api/v1/quote?symbol={stockSymbol}&token=cn378f9r01qtdiertrtgcn378f9r01qtdiertru0"),
                     Method = HttpMethod.Get,
                 };
                 HttpResponseMessage httpResponseMessage = await httpClient.SendAsync(httpRequestMessage);
@@ -28,6 +28,12 @@ namespace HTTP_Client_RestRequest.Service
                 string response = streamRead.ReadToEnd();
 
                 Dictionary<string, object>? responseDectonary = JsonSerializer.Deserialize<Dictionary<string, object>>(response);
+
+                if (responseDectonary == null)
+                    throw new InvalidOperationException("NO response");
+                if (responseDectonary.ContainsKey("error"))
+                    throw new InvalidOperationException(Convert.ToString(responseDectonary["error"]));
+
                 return responseDectonary;
             }
         }
