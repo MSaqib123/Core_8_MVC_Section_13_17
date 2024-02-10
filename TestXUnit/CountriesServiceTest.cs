@@ -16,6 +16,8 @@ namespace TestXUnit
         {
             _countiesService = new CountriesService();
         }
+        #region Add_Country
+
         //=============================================================
         //============== 1. CountryAddResult Is Null ==================
         //============================================================= 
@@ -75,11 +77,54 @@ namespace TestXUnit
 
             //act
             CountryResponse resposne = _countiesService.AddCountry(Req1);
+            List<CountryResponse> countries_from_GetAllCountries = _countiesService.GetAllCountries();
 
             //Assert
             Assert.True(resposne.CountryId != Guid.Empty);
+            Assert.Contains(resposne,countries_from_GetAllCountries);
         }
 
+        #endregion
+
+
+        #region GetCountry_List
+        [Fact]
+        public void GetAllCountries_EmptyList()
+        {
+            //Act
+            List<CountryResponse> Actual_Country_Response_List = _countiesService.GetAllCountries();
+
+            //Assert
+            Assert.Empty(Actual_Country_Response_List);
+        }
+
+        [Fact]
+        public void GetAllCountries_AddFewCountries()
+        {
+            //Arrange 
+            List<CountryAddRequest> country_request_list = new List<CountryAddRequest>()
+            {
+                new CountryAddRequest(){CountryName="USA"},
+                new CountryAddRequest(){CountryName = "India"}
+            };
+
+            //Act
+            List<CountryResponse> country_List_fromAdd_country = new List<CountryResponse>();
+            foreach (CountryAddRequest item in country_request_list)
+            {
+                country_List_fromAdd_country.Add(_countiesService.AddCountry(item));
+            }
+
+            //Assert
+            List<CountryResponse>  actualCountryResponseList= _countiesService.GetAllCountries();
+            foreach (var expectCountry in country_List_fromAdd_country)
+            {
+
+                Assert.Contains(expectCountry,actualCountryResponseList);
+            }
+        }
+
+        #endregion
     }
 
 }

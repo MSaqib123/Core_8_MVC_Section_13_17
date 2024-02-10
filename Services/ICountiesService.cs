@@ -2,11 +2,19 @@
 
 namespace Services
 {
-    /// <summary>
-    /// Represent  BusniceLogic  DI for  Country
-    /// </summary>
     public interface ICountiesService
     {
+        /// <summary>
+        /// Represent  BusniceLogic  DI for  Country
+        /// </summary>
+        /// <param name="countryAddRequest"></param>
+        /// <returns></returns>
         CountryResponse AddCountry(CountryAddRequest? countryAddRequest);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        List<CountryResponse> GetAllCountries();
     }
 }

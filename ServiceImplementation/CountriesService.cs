@@ -11,6 +11,8 @@ namespace ServiceImplementation
         {
             _countries = new List<Country>();
         }
+
+        #region AddCountry
         public CountryResponse AddCountry(CountryAddRequest? countryAddRequest)
         {
             //=== 1. Null Validation ===
@@ -43,5 +45,14 @@ namespace ServiceImplementation
 
 
         }
+
+        #endregion
+
+        #region GetCountryList
+        public List<CountryResponse> GetAllCountries()
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
     }
 }
