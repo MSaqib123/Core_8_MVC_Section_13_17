@@ -1,3 +1,5 @@
+using HTTP_Client_RestRequest.Service;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +8,8 @@ builder.Services.AddControllersWithViews();
 //HttpClient
 //==================
 builder.Services.AddHttpClient();
+builder.Services.AddScoped<MyServices, MyServices>();
+
 
 var app = builder.Build();
 

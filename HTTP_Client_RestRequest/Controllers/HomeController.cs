@@ -1,4 +1,5 @@
 ﻿using HTTP_Client_RestRequest.Models;
+using HTTP_Client_RestRequest.Service;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -6,15 +7,16 @@ namespace HTTP_Client_RestRequest.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly MyServices _service;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController( MyServices service)
         {
-            _logger = logger;
+            _service = service;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            await _service.method();
             return View();
         }
 
@@ -23,10 +25,5 @@ namespace HTTP_Client_RestRequest.Controllers
             return View();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
     }
 }

@@ -1,8 +1,9 @@
 ﻿using System.Net.NetworkInformation;
+using System.Text.Json;
 
 namespace HTTP_Client_RestRequest.Service
 {
-    public class MyServices
+    public class MyServices : IMyServices
     {
         private readonly IHttpClientFactory _httpClientFactory;
         public MyServices(IHttpClientFactory httpClientFactory)
@@ -10,7 +11,7 @@ namespace HTTP_Client_RestRequest.Service
             _httpClientFactory = httpClientFactory;
         }
 
-        public async Task method()
+        public async Task<Dictionary<string, object>> getStrockPriceQuote()
         {
             using (HttpClient httpClient = _httpClientFactory.CreateClient())
             {
@@ -25,6 +26,9 @@ namespace HTTP_Client_RestRequest.Service
                 StreamReader streamRead = new StreamReader(stream);
 
                 string response = streamRead.ReadToEnd();
+
+                Dictionary<string, object>? responseDectonary = JsonSerializer.Deserialize<Dictionary<string, object>>(response);
+                return responseDectonary;
             }
         }
     }
