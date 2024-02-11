@@ -70,7 +70,7 @@ namespace TestXUnit
         //============== 4. supply proper country name ==================
         //============================================================= 
         [Fact]
-        public void AddCountry_NullCountryDetail()
+        public void AddCountry_ProperCountryDetail()
         {
             //Arrange
             CountryAddRequest? Req1 = new CountryAddRequest() { CountryName = "Japan" };
