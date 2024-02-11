@@ -129,7 +129,9 @@ namespace TestXUnit
 
 
         #region GetCountryById
-        
+        /// <summary>
+        /// if we provide null CountryId its should return nullresponse
+        /// </summary>
         [Fact]
         public void GetCountryByCountryId_NullCountryId()
         {
@@ -143,6 +145,9 @@ namespace TestXUnit
             Assert.Null(Country_respopnse_from_get_method);
         }
 
+        /// <summary>
+        /// If id is valide then it shuld return the valid responseobject data
+        /// </summary>
         [Fact]
         public void GetCountryByCountryId_ValidCountryId()
         {
