@@ -12,9 +12,11 @@ namespace Services
         CountryResponse AddCountry(CountryAddRequest? countryAddRequest);
 
         /// <summary>
-        /// GetAllCountries 
+        /// GetAllCountries for Getting All countreis
         /// </summary>
         /// <returns></returns>
         List<CountryResponse> GetAllCountries();
+
+        CountryResponse? GetCountryByCountryId(Guid? countryId);
     }
 }
