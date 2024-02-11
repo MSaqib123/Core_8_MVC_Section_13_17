@@ -12,7 +12,7 @@ namespace Services
         CountryResponse AddCountry(CountryAddRequest? countryAddRequest);
 
         /// <summary>
-        /// 
+        /// GetAllCountries 
         /// </summary>
         /// <returns></returns>
         List<CountryResponse> GetAllCountries();
