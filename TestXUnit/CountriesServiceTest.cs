@@ -81,6 +81,7 @@ namespace TestXUnit
 
             //Assert
             Assert.True(resposne.CountryId != Guid.Empty);
+            //here its automatically dedect that  equal values 
             Assert.Contains(resposne,countries_from_GetAllCountries);
         }
 
