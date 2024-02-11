@@ -72,7 +72,7 @@ namespace Services.DTO
                 CountryID = person.CountryID,
                 Address = person.Address,
                 ReceiveNewLetters = person.ReceiveNewLetters,
-                //Age = person.DateOfBirth
+                Age = person.DateOfBirth != null ? Math.Round((DateTime.Now - person.DateOfBirth.Value).TotalDays /365.25) : null
             };
         }
     }
