@@ -18,7 +18,24 @@ namespace Services.DTO
         public Guid CountryId { get; set; }
         public string? CountryName { get; set; }
 
-        
+        //_____ Compairing Response List Values with Added Object _______
+        public override bool Equals(object? obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+            
+            if (obj.GetType() != typeof(CountryResponse))
+            {
+                return false;
+            }
+            CountryResponse country_to_compare = (CountryResponse)obj;
+            var condition = CountryId == country_to_compare.CountryId && CountryName == country_to_compare.CountryName;
+            return condition;
+        }
+
+
     }
     public static class CountryExtension
     {
