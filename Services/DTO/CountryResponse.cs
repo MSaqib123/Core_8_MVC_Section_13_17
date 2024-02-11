@@ -19,6 +19,11 @@ namespace Services.DTO
         public string? CountryName { get; set; }
 
         //_____ Compairing Response List Values with Added Object _______
+        /// <summary>
+        /// its Compair the Current object to another object of country type and return true , if both values are same; otherwiseresutn false
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public override bool Equals(object? obj)
         {
             if (obj == null)
