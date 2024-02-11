@@ -56,11 +56,16 @@ namespace ServiceImplementation
         #endregion
 
         #region GetCountryById
-
         public CountryResponse? GetCountryByCountryId(Guid? countryId)
         {
-            //return (CountryResponse)_countries.Select(country => country.ToContryResponse().CountryId == countryId).First();
-            return new CountryResponse();
+            if (countryId == null)
+                return null;
+
+            Country? Country_resposne_from_list = _countries.FirstOrDefault(country => country.CountryId == countryId);
+            if (Country_resposne_from_list == null)
+                return null;
+
+            return Country_resposne_from_list.ToContryResponse(); //null;
         }
         #endregion
     }
