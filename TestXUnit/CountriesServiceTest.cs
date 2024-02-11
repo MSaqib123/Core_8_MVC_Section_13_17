@@ -152,13 +152,14 @@ namespace TestXUnit
         public void GetCountryByCountryId_ValidCountryId()
         {
             //Arrang
-            Guid? countryId = null;
+            CountryAddRequest? country_add_request = new CountryAddRequest() { CountryName = "China" };
+            CountryResponse country_response_from_add = _countiesService.AddCountry(country_add_request);
 
             //act
-            CountryResponse? Country_respopnse_from_get_method = _countiesService.GetCountryByCountryId(countryId);
+            CountryResponse? Country_respopnse_from_get = _countiesService.GetCountryByCountryId(country_response_from_add.CountryId);
 
             //Assert
-            Assert.Null(Country_respopnse_from_get_method);
+            Assert.Equal(country_response_from_add, Country_respopnse_from_get);
         }
         #endregion
     }
