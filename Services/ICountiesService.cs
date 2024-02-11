@@ -17,6 +17,11 @@ namespace Services
         /// <returns></returns>
         List<CountryResponse> GetAllCountries();
 
+        /// <summary>
+        /// GetCountry by CountryId
+        /// </summary>
+        /// <param name="countryId"></param>
+        /// <returns></returns>
         CountryResponse? GetCountryByCountryId(Guid? countryId);
     }
 }
