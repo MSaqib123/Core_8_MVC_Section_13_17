@@ -40,6 +40,10 @@ namespace Services.DTO
             return condition;
         }
 
+        /// <summary>
+        /// removing Class warning because if we override Equal then we have to override Equals
+        /// </summary>
+        /// <returns></returns>
         public override int GetHashCode()
         {
             return base.GetHashCode();
