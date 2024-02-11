@@ -54,5 +54,13 @@ namespace ServiceImplementation
             return _countries.Select(country => country.ToContryResponse()).ToList();
         }
         #endregion
+
+        #region GetCountryById
+
+        public CountryResponse? GetCountryByCountryId(Guid? countryId)
+        {
+            return (CountryResponse) _countries.Select(country => country.ToContryResponse().CountryId == countryId).First();
+        }
+        #endregion
     }
 }
