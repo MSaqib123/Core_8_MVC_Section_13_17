@@ -59,7 +59,8 @@ namespace ServiceImplementation
 
         public CountryResponse? GetCountryByCountryId(Guid? countryId)
         {
-            return (CountryResponse) _countries.Select(country => country.ToContryResponse().CountryId == countryId).First();
+            //return (CountryResponse)_countries.Select(country => country.ToContryResponse().CountryId == countryId).First();
+            return new CountryResponse();
         }
         #endregion
     }
