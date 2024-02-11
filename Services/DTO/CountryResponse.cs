@@ -40,6 +40,10 @@ namespace Services.DTO
             return condition;
         }
 
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
 
     }
     public static class CountryExtension
