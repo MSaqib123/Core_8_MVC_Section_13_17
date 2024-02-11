@@ -129,8 +129,22 @@ namespace TestXUnit
 
 
         #region GetCountryById
+        
         [Fact]
         public void GetCountryByCountryId_NullCountryId()
+        {
+            //Arrang
+            Guid? countryId = null;
+
+            //act
+            CountryResponse? Country_respopnse_from_get_method = _countiesService.GetCountryByCountryId(countryId);
+
+            //Assert
+            Assert.Null(Country_respopnse_from_get_method);
+        }
+
+        [Fact]
+        public void GetCountryByCountryId_ValidCountryId()
         {
             //Arrang
             Guid? countryId = null;
