@@ -10,5 +10,9 @@ namespace TestXUnit
     {
         //Pakistan
         public int personName { get; set; }
+        public int personNamea { get; set; }
+        public int personNameb { get; set; }
+        public int personNamec { get; set; }
+        public int personNamedss { get; set; }
     }
 }
