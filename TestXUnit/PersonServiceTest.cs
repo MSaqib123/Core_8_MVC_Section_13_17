@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Services;
+using Services.DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,11 +10,45 @@ namespace TestXUnit
 {
     public class PersonServiceTest
     {
-        //Pakistan
-        public int personName { get; set; }
-        public int personNamea { get; set; }
-        public int personNameb { get; set; }
-        public int personNamec { get; set; }
-        public int personNamedss { get; set; }
+        //private fields
+        private readonly IPersonService _personService;
+        public PersonServiceTest(IPersonService personService)
+        {
+            _personService = personService;
+        }
+
+        //===============================
+        //--------- Person --------------
+        //===============================
+        [Fact]
+        public void AddPerson_NullPerson()
+        {
+            //Arrange
+            PersonAddRequest? personAddRequest = null;
+
+            //Act
+            Assert.Throws<ArgumentNullException>(() =>
+            {
+                _personService.AddPerson(personAddRequest);
+            });
+        }
+
+        //===============================
+        //--------- Person --------------
+        //===============================
+        [Fact]
+        public void AddPerson_ProperNameIsPerson()
+        {
+            //Arrange
+            PersonAddRequest? personAddRequest = new PersonAddRequest() { PersonName = null};
+
+            //Act
+            _personService.AddPerson(personAddRequest);
+        }
+        
+
+
+        ///Pakistan zindiabad
+
     }
 }
