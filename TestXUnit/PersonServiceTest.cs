@@ -45,7 +45,20 @@ namespace TestXUnit
             //Act
             _personService.AddPerson(personAddRequest);
         }
-        
+
+        //===============================
+        //--------- Person --------------
+        //===============================
+        [Fact]
+        public void AddPerson_ProperNameIsPersons()
+        {
+            //Arrange
+            PersonAddRequest? personAddRequest = new PersonAddRequest() { PersonName = null };
+
+            //Act
+            _personService.AddPerson(personAddRequest);
+        }
+
 
 
         ///Pakistan zindiabad
