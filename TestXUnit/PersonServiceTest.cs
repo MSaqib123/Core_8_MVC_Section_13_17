@@ -1,4 +1,5 @@
-﻿using Services;
+﻿using ServiceImplementation;
+using Services;
 using Services.DTO;
 using Services.Enums;
 using System;
@@ -14,9 +15,9 @@ namespace TestXUnit
     {
         //private fields
         private readonly IPersonService _personService;
-        public PersonServiceTest(IPersonService personService)
+        public PersonServiceTest()
         {
-            _personService = personService;
+            _personService = new PersonService();
         }
 
         //===============================

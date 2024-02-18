@@ -28,6 +28,7 @@ namespace ServiceImplementation
             return responsePerson;
         }
 
+        #region Add_person
         public PersonResponse AddPerson(PersonAddRequest? personAddRequest)
         {
             //null
@@ -54,6 +55,7 @@ namespace ServiceImplementation
             return ConvertPersonToPersonResponse(person);
 
         }
+        #endregion
 
         public List<PersonResponse> GetAllPersons()
         {
