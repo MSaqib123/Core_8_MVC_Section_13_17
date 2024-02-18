@@ -3,6 +3,7 @@ using Services;
 using Services.DTO;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,10 +38,20 @@ namespace ServiceImplementation
                 throw new ArgumentNullException(nameof(personAddRequest));
             }
             //name null
-            if (string.IsNullOrEmpty(personAddRequest.PersonName))
+            //if (string.IsNullOrEmpty(personAddRequest.PersonName))
+            //{
+            //    throw new ArgumentException("PersonName is null");
+            //}
+
+            //___ Model Validation ____
+            ValidationContext validationContext = new ValidationContext(personAddRequest);
+            List<ValidationResult> validationResults = new List<ValidationResult>();
+            bool isValid = Validator.TryValidateObject(personAddRequest,validationContext,validationResults,true);
+            if (!isValid)
             {
-                throw new ArgumentException("PersonName is null");
+                throw new ArgumentException(validationResults.FirstOrDefault()?.ErrorMessage);
             }
+
 
             //convert to personAddRequst
             Person person = personAddRequest.ToPerson();
