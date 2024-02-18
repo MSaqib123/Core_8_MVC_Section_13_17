@@ -1,6 +1,7 @@
 ﻿using Entities;
 using Services;
 using Services.DTO;
+using Services.Helpers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -44,14 +45,16 @@ namespace ServiceImplementation
             //}
 
             //___ Model Validation ____
-            ValidationContext validationContext = new ValidationContext(personAddRequest);
-            List<ValidationResult> validationResults = new List<ValidationResult>();
-            bool isValid = Validator.TryValidateObject(personAddRequest,validationContext,validationResults,true);
-            if (!isValid)
-            {
-                throw new ArgumentException(validationResults.FirstOrDefault()?.ErrorMessage);
-            }
+            //ValidationContext validationContext = new ValidationContext(personAddRequest);
+            //List<ValidationResult> validationResults = new List<ValidationResult>();
+            //bool isValid = Validator.TryValidateObject(personAddRequest,validationContext,validationResults,true);
+            //if (!isValid)
+            //{
+            //    throw new ArgumentException(validationResults.FirstOrDefault()?.ErrorMessage);
+            //}
 
+            //____ external Class _____
+            ValidationHelper.ModelValidation(personAddRequest);
 
             //convert to personAddRequst
             Person person = personAddRequest.ToPerson();
