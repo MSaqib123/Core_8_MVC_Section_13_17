@@ -14,12 +14,20 @@ namespace Services
         /// </summary>
         /// <param name="personAddRequest"></param>
         /// <returns></returns>
-        PersonResponse AddPerson(PersonAddRequest personAddRequest);
+        PersonResponse AddPerson(PersonAddRequest? personAddRequest);
+
         /// <summary>
-        /// GetPerson
+        /// getAll person
         /// </summary>
-        /// <param name="PersonId"></param>
         /// <returns></returns>
-        List<PersonResponse> GetAllPersons(int? PersonId);
+        List<PersonResponse> GetAllPersons();
+
+        /// <summary>
+        /// get person byId
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        PersonResponse GetPersonById(int id);
+
     }
 }

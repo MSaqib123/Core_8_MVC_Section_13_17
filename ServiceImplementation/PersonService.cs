@@ -10,12 +10,17 @@ namespace ServiceImplementation
 {
     public class PersonService : IPersonService
     {
-        public PersonResponse AddPerson(PersonAddRequest personAddRequest)
+        public PersonResponse AddPerson(PersonAddRequest? personAddRequest)
         {
             throw new NotImplementedException();
         }
 
-        public List<PersonResponse> GetAllPersons(int? PersonId)
+        public List<PersonResponse> GetAllPersons()
+        {
+            throw new NotImplementedException();
+        }
+
+        public PersonResponse GetPersonById(int id)
         {
             throw new NotImplementedException();
         }
