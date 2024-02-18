@@ -75,7 +75,9 @@ namespace ServiceImplementation
         #region GetAllPerson
         public List<PersonResponse> GetAllPersons()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+            List<PersonResponse> listPersonResponse = _person.Select(x => x.ToPersonResponse()).ToList();
+            return listPersonResponse;
         }
         #endregion
 
