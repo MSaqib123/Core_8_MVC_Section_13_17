@@ -27,7 +27,7 @@ namespace Services
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        PersonResponse GetPersonById(int id);
+        PersonResponse? GetPersonById(Guid? personId);
 
     }
 }

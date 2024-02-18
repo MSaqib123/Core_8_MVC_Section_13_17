@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -71,14 +72,18 @@ namespace ServiceImplementation
         }
         #endregion
 
+        #region GetAllPerson
         public List<PersonResponse> GetAllPersons()
         {
             throw new NotImplementedException();
         }
+        #endregion
 
-        public PersonResponse GetPersonById(int id)
+        #region GetPersonById
+        public PersonResponse? GetPersonById(Guid? personId)
         {
             throw new NotImplementedException();
         }
+        #endregion
     }
 }
