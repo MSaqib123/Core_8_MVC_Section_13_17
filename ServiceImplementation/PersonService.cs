@@ -82,7 +82,16 @@ namespace ServiceImplementation
         #region GetPersonById
         public PersonResponse? GetPersonById(Guid? personId)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+            if (personId == null)
+                return null;
+            Person? person = _person.FirstOrDefault(x=>x.PersonID == personId);
+
+            if (person == null)
+                return null;
+
+            //convert to personResponse   (hidding orignal Model)
+            return person.ToPersonResponse();
         }
         #endregion
     }
