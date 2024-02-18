@@ -23,6 +23,7 @@ namespace Services.DTO
         public string? Address { get; set; }
         public bool? ReceiveNewLetters { get; set; }
         public double? Age{ get; set; }
+        public string? Country { get; set; }
 
         public override bool Equals(object? obj)
         {
@@ -60,7 +61,7 @@ namespace Services.DTO
     }
     public static class PersonExtension
     {
-        public static PersonResponse ToContryResponse(this Person person)
+        public static PersonResponse ToPersonResponse(this Person person)
         {
             return new PersonResponse()
             {
