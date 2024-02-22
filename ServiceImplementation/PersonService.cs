@@ -98,6 +98,13 @@ namespace ServiceImplementation
         #endregion
 
         #region GetFilteredPersons
+        /// <summary>
+        /// Return all person that match with the given search field and search
+        /// </summary>
+        /// <param name="searchBy">Search Field to search</param>
+        /// <param name="SearchString">Search string to search</param>
+        /// <returns>Return all person that match with the given search field and search</returns>
+        /// <exception cref="NotImplementedException"></exception>
         public List<PersonResponse> GetFilteredPersons(string searchBy, string? SearchString)
         {
             throw new NotImplementedException();
