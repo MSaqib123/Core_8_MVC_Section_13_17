@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
@@ -107,7 +108,47 @@ namespace ServiceImplementation
         /// <exception cref="NotImplementedException"></exception>
         public List<PersonResponse> GetFilteredPersons(string searchBy, string? SearchString)
         {
-            throw new NotImplementedException();
+            List<PersonResponse> allPersons = GetAllPersons();
+            List<PersonResponse> matchingPersons = allPersons;
+
+            if (string.IsNullOrEmpty(searchBy) || string.IsNullOrEmpty(SearchString))
+                return matchingPersons;
+
+            switch (searchBy)
+            {
+                case nameof(Person.PersonName):
+                    matchingPersons = allPersons.Where(
+                        x => (
+                            !string.IsNullOrEmpty(x.PersonName) ? 
+                            x.PersonName.Contains(SearchString, StringComparison.OrdinalIgnoreCase) :
+                            true
+                       )).ToList();
+                    break;
+                case nameof(Person.Email):
+                    matchingPersons = allPersons.Where(
+                        x => (
+                            !string.IsNullOrEmpty(x.Email) ? 
+                            x.PersonName.Contains(SearchString, StringComparison.OrdinalIgnoreCase) :
+                            true
+                       )).ToList();
+                    break;
+
+                case nameof(Person.DateOfBirth):
+                    matchingPersons = allPersons.Where(
+                        x => 
+                            (x.DateOfBirth!=null) ?
+                            x.DateOfBirth.Value.ToString("dd MMMM yyyy").Contains(SearchString, StringComparison.OrdinalIgnoreCase) :
+                            true
+                       ).ToList();
+                    break;
+
+                default:
+                    matchingPersons = allPersons;
+                    break;
+            }
+
+            return matchingPersons;
+
         }
         #endregion
     }
