@@ -57,6 +57,11 @@ namespace Services.DTO
         {
             return base.GetHashCode();
         }
+        public override string ToString()
+        {
+            return $"PersonId: {PersonID}, PersonName: {PersonName}, Email: {Email}, DateOfBirth: {DateOfBirth}, Gender: {Gender}, CountryID: {CountryID}, Address: {Address}, ReceiveNewLetters: {ReceiveNewLetters}, Age: {Age}, Country: {Country}";
+        }
+
 
     }
     public static class PersonExtension
@@ -69,7 +74,7 @@ namespace Services.DTO
                 PersonName = person.PersonName,
                 Email = person.Email,
                 DateOfBirth = person.DateOfBirth,
-                Gender = person.Gender.ToString(),
+                Gender = person?.Gender?.ToString(),
                 CountryID = person.CountryID,
                 Address = person.Address,
                 ReceiveNewLetters = person.ReceiveNewLetters,

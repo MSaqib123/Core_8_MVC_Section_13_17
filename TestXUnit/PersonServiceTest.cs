@@ -9,6 +9,7 @@ using System.ComponentModel.Design;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xunit.Abstractions;
 using Xunit.Sdk;
 
 namespace TestXUnit
@@ -18,10 +19,12 @@ namespace TestXUnit
         //private fields
         private readonly IPersonService _personService;
         private readonly ICountiesService _countryService;
-        public PersonServiceTest()
+        private readonly ITestOutputHelper _testOutputHelper;
+        public PersonServiceTest(ITestOutputHelper testOutputHelper)
         {
             _personService = new PersonService();
             _countryService = new CountriesService();
+            _testOutputHelper = testOutputHelper;
         }
 
         //________ Add Person ___________
@@ -68,8 +71,8 @@ namespace TestXUnit
             //Arrange
             PersonAddRequest? personAddRequest = new PersonAddRequest()
             {
-                PersonName = "",
-                Email = "",
+                PersonName = "Pak",
+                Email = "m43577535@gmail.com",
                 DateOfBirth = DateTime.Now,
                 Gender = GenderOptions.Male,
                 CountryID = Guid.NewGuid(),
@@ -78,7 +81,7 @@ namespace TestXUnit
 
             };
 
-            //Act
+            //Actiual
             PersonResponse? add_person_resposne = _personService.AddPerson(personAddRequest);
             List<PersonResponse> person_List = _personService.GetAllPersons();
 
@@ -195,11 +198,23 @@ namespace TestXUnit
             };
 
             List<PersonResponse> personResponses_List = new List<PersonResponse>();
-
             foreach (PersonAddRequest item in person_requst_addList)
             {
                  PersonResponse person_response = _personService.AddPerson(item);
                 personResponses_List.Add(person_response);
+            }
+
+            //Print personResponses_List
+            _testOutputHelper.WriteLine("Expected: ");
+            foreach (var item in personResponses_List)
+            {
+                _testOutputHelper.WriteLine(item.ToString());
+            }
+            //Print _personService.GetAllPersons()
+            _testOutputHelper.WriteLine("Actual: ");
+            foreach (var item in _personService.GetAllPersons())
+            {
+                _testOutputHelper.WriteLine(item.ToString());
             }
 
             //act
@@ -215,5 +230,8 @@ namespace TestXUnit
         }
 
         #endregion
+
+        //________ Get Person All Person ___________
+
     }
 }

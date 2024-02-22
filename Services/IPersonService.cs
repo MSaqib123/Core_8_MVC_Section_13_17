@@ -29,5 +29,8 @@ namespace Services
         /// <returns></returns>
         PersonResponse? GetPersonById(Guid? personId);
 
+
+        List<PersonResponse> GetFilteredPersons(string searchBy , string? SearchString);
+
     }
 }

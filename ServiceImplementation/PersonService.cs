@@ -96,5 +96,12 @@ namespace ServiceImplementation
             return person.ToPersonResponse();
         }
         #endregion
+
+        #region GetFilteredPersons
+        public List<PersonResponse> GetFilteredPersons(string searchBy, string? SearchString)
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
     }
 }
