@@ -1,6 +1,7 @@
 ﻿using Entities;
 using Services;
 using Services.DTO;
+using Services.Enums;
 using Services.Helpers;
 using System;
 using System.Collections.Generic;
@@ -152,10 +153,12 @@ namespace ServiceImplementation
         }
         #endregion
 
-        //p[akskdkfsdf
-        //p[akskdkfsdf
-        //p[akskdkfsdf
-        //p[akskdkfsdf
-        //p[akskdkfsdf
+        #region SortedPerson
+        public List<PersonResponse> GetSortedPersons(List<PersonResponse> allPersons, string SortBy, SortOrderOptions sortOrder)
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
+
     }
 }
