@@ -1,4 +1,5 @@
 ﻿using Entities;
+using Microsoft.VisualBasic;
 using ServiceImplementation;
 using Services;
 using Services.DTO;
@@ -495,5 +496,97 @@ namespace TestXUnit
         }
         #endregion
 
+        //________ Update Perosn __________
+        #region Update-person
+        [Fact]
+        public void UpdatePerson_NullPerson()
+        {
+            //Arrange
+            PersonUpdateRequest? Person_update_request = null;
+
+            //Assert
+            Assert.Throws<ArgumentException>(() =>
+            {
+                //act
+                _personService.UpdatePerson(Person_update_request);
+            });
+        }
+        [Fact]
+        public void UpdatePerson_InvalidPersonID()
+        {
+            //Arrange
+            PersonUpdateRequest? Person_update_request = new PersonUpdateRequest()
+            {
+                PersonId = Guid.NewGuid()
+            };
+
+            //Assert
+            Assert.Throws<ArgumentException>(() =>
+            {
+                //act
+                _personService.UpdatePerson(Person_update_request);
+            });
+        }
+        [Fact]
+        public void UpdatePerson_PersonNameIsNull()
+        {
+            //Arrange
+            CountryAddRequest country_response_req = new CountryAddRequest()
+            {
+                CountryName = "UK",
+            };
+            CountryResponse country_response_from_add  =  _countryService.AddCountry(country_response_req);
+
+            PersonAddRequest? Person_add_request = new PersonAddRequest()
+            {
+                PersonName = "Boota", CountryID = country_response_from_add.CountryId
+            };
+
+            PersonResponse person_Response_from_Add = _personService.AddPerson(Person_add_request);
+            PersonUpdateRequest person_update_requst = person_Response_from_Add.ToPersonUpdateRequest();
+            person_update_requst.PersonName = null;
+ 
+            //Assert
+            Assert.Throws<ArgumentException>(() =>
+            {
+                //act
+                _personService.UpdatePerson(person_update_requst);
+            });
+        }
+        [Fact]
+        public void UpdatePerso_PersonFullDetailsUpdation()
+        {
+            //Arrange
+            CountryAddRequest country_response_req = new CountryAddRequest()
+            {
+                CountryName = "UK",
+            };
+            CountryResponse country_response_from_add = _countryService.AddCountry(country_response_req);
+
+            PersonAddRequest? Person_add_request = new PersonAddRequest()
+            {
+                PersonName = "Boota",
+                CountryID = country_response_from_add.CountryId,
+                Address = "a",
+                DateOfBirth = DateTime.Now,
+                Email = "pk@gmail.com",
+                Gender = GenderOptions.Male,
+                ReceiveNewLetters = true
+            };
+
+            PersonResponse person_Response_from_Add = _personService.AddPerson(Person_add_request);
+
+            PersonUpdateRequest person_update_requst = person_Response_from_Add.ToPersonUpdateRequest();
+            person_update_requst.PersonName = "Saqib";
+            person_update_requst.Email = "saqib@gmail.com";
+
+            //act
+            PersonResponse personResponse_fromUpdate = _personService.UpdatePerson(person_update_requst);
+            PersonResponse? personResponse_from_get = _personService.GetPersonById(personResponse_fromUpdate.PersonID);
+
+            //Assert
+            Assert.Equal(personResponse_from_get, personResponse_fromUpdate);
+        }
+        #endregion
     }
 }

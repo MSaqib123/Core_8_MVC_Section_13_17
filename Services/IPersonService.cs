@@ -48,5 +48,7 @@ namespace Services
         /// <returns></returns>
         List<PersonResponse> GetSortedPersons(List<PersonResponse> allPersons , string SortBy , SortOrderOptions sortOrder);
 
+
+        PersonResponse UpdatePerson(PersonUpdateRequest update);
     }
 }

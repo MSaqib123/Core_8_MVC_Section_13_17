@@ -198,5 +198,12 @@ namespace ServiceImplementation
         }
         #endregion
 
+        #region UpdatePerson
+
+        public PersonResponse UpdatePerson(PersonUpdateRequest update)
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
     }
 }
