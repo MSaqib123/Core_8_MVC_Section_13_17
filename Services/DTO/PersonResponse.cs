@@ -1,4 +1,5 @@
 ﻿using Entities;
+using Services.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -62,6 +63,23 @@ namespace Services.DTO
             return $"PersonId: {PersonID}, PersonName: {PersonName}, Email: {Email}, DateOfBirth: {DateOfBirth}, Gender: {Gender}, CountryID: {CountryID}, Address: {Address}, ReceiveNewLetters: {ReceiveNewLetters}, Age: {Age}, Country: {Country}";
         }
 
+        //___ Update person Request _____
+        //convert  to Update dto
+
+        public PersonUpdateRequest ToPersonUpdateRequest()
+        {
+            return new PersonUpdateRequest()
+            {
+                PersonId = PersonID,
+                PersonName = PersonName,
+                Email = Email,
+                DateOfBirth = DateOfBirth,
+                Gender = (GenderOptions)Enum.Parse(typeof(GenderOptions), Gender, true),
+                CountryID = CountryID,
+                Address = Address,
+                ReceiveNewLetters = ReceiveNewLetters,
+            };
+        }
 
     }
     public static class PersonExtension
