@@ -1,4 +1,5 @@
-﻿@model List<PersonResponse>
+﻿@using Services.Enums;
+@model List<PersonResponse>
 
 
 
@@ -29,7 +30,21 @@
             <thead>
                 <tr>
                     <th>Person ID</th>
-                    <th>Name</th>
+                    <th>
+                        @if (ViewBag.SortBy == nameof(PersonResponse.PersonName) && ViewBag.sortOrder == SortOrderOptions.ASC.ToString())
+                        {
+                            <a href="~/Person/PersonList?searchBy=@ViewBag.CurrentSearchBy&searchString=@ViewBag.CurrentSearchString&sortBy=@nameof(PersonResponse.PersonName)&sortOrder=DESC">Person Name <i class="fa-solid fa-sort-up"></i></a>
+                        }
+                        else if (ViewBag.SortBy == nameof(PersonResponse.PersonName) && ViewBag.sortOrder == SortOrderOptions.DESC.ToString())
+                        {
+                            <a href="~/Person/PersonList?searchBy=@ViewBag.CurrentSearchBy&searchString=@ViewBag.CurrentSearchString&sortBy=@nameof(PersonResponse.PersonName)&sortOrder=ASC">Person Name <i class="fa-solid fa-sort-down"></i></a>
+                        }
+                        else
+                        {
+                            //Other then PerosnName then 
+                            <a href="~/Person/PersonList?searchBy=@ViewBag.CurrentSearchBy&searchString=@ViewBag.CurrentSearchString&sortBy=@nameof(PersonResponse.PersonName)&sortOrder=ASC">Person Name <i class="fa-solid fa-sort-down"></i></a>
+                        }
+                    </th>
                     <th>Email</th>
                     <th>Date of Birth</th>
                     <th>Gender</th>
