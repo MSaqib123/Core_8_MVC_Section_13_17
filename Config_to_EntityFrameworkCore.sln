@@ -7,15 +7,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Config_to_EntityFrameworkCo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HTTP_Client_RestRequest", "HTTP_Client_RestRequest\HTTP_Client_RestRequest.csproj", "{05AC2EB0-E88F-42DB-A986-FD4E26584E19}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "xUnit", "xUnit\xUnit.csproj", "{E834E4A6-6243-4BF0-92D8-D9A359F1256B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "xUnitCRUD", "xUnit\xUnitCRUD.csproj", "{E834E4A6-6243-4BF0-92D8-D9A359F1256B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestXUnit", "TestXUnit\TestXUnit.csproj", "{39964ADD-A422-4E35-B281-F369018D3D5A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestXUnit", "TestXUnit\TestXUnit.csproj", "{39964ADD-A422-4E35-B281-F369018D3D5A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entities.csproj", "{0BB99D61-C4B1-41B5-8A9D-9548FA7CFCF9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "Entities\Entities.csproj", "{0BB99D61-C4B1-41B5-8A9D-9548FA7CFCF9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{9199466C-F73D-4A46-9473-569EFA3611A5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services", "Services\Services.csproj", "{9199466C-F73D-4A46-9473-569EFA3611A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceImplementation", "ServiceImplementation\ServiceImplementation.csproj", "{AAA9DB38-6E80-49F1-B041-2BEE46AC7F45}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceImplementation", "ServiceImplementation\ServiceImplementation.csproj", "{AAA9DB38-6E80-49F1-B041-2BEE46AC7F45}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
