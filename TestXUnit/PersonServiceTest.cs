@@ -24,7 +24,7 @@ namespace TestXUnit
         private readonly ITestOutputHelper _testOutputHelper;
         public PersonServiceTest(ITestOutputHelper testOutputHelper)
         {
-            _personService = new PersonService();
+            _personService = new PersonService(false);
             _countryService = new CountriesService();
             _testOutputHelper = testOutputHelper;
         }

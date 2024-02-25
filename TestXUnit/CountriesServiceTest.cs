@@ -14,7 +14,7 @@ namespace TestXUnit
         private readonly ICountiesService _countiesService;
         public CountriesServiceTest()
         {
-            _countiesService = new CountriesService();
+            _countiesService = new CountriesService(false);
         }
         #region Add_Country
 

@@ -18,10 +18,128 @@ namespace ServiceImplementation
     {
         private readonly List<Person> _person;
         private readonly ICountiesService _countiesService;
-        public PersonService()
+        public PersonService(bool initialize = true)
         {
             _person = new List<Person>();
             _countiesService = new CountriesService();
+            if (initialize)
+            {
+                //private filed
+                _person.AddRange(new List<Person>()
+                {
+                    new Person()
+                    {
+                        PersonID = Guid.Parse("2a8cbf0d-dad0-4d13-925f-7c1e152df715"),
+                        PersonName = "Pakistan",
+                        Address = "dil dil pkaistna",
+                        CountryID = Guid.Parse("5f9a6b33-04e8-47a7-bc1d-e5cc29f42647"),
+                        DateOfBirth = DateTime.Now,
+                        Email = "m435777535@gmail.com",
+                        Gender = GenderOptions.Male.ToString(),
+                        ReceiveNewLetters = true
+                    },
+                    new Person()
+                    {
+                        PersonID = Guid.Parse("5f9a6b33-04e8-47a7-bc1d-e5cc29f42647"),
+                        PersonName = "John Doe",
+                        Address = "123 Main St",
+                        CountryID = Guid.Parse("e8f5f7d6-6a8d-44e1-9b32-c0521c4528f2"),
+                        DateOfBirth = new DateTime(1990, 5, 15),
+                        Email = "john.doe@example.com",
+                        Gender = GenderOptions.Male.ToString(),
+                        ReceiveNewLetters = false
+                    },
+                    new Person()
+                    {
+                        PersonID = Guid.Parse("e8f5f7d6-6a8d-44e1-9b32-c0521c4528f2"),
+                        PersonName = "Jane Smith",
+                        Address = "456 Oak St",
+                        CountryID = Guid.Parse("9a23f296-6955-464c-87e3-8e2a2d1a38ef"),
+                        DateOfBirth = new DateTime(1985, 10, 8),
+                        Email = "jane.smith@example.com",
+                        Gender = GenderOptions.Female.ToString(),
+                        ReceiveNewLetters = true
+                    },
+                    new Person()
+                    {
+                        PersonID = Guid.Parse("9a23f296-6955-464c-87e3-8e2a2d1a38ef"),
+                        PersonName = "Michael Johnson",
+                        Address = "789 Elm St",
+                        CountryID = Guid.Parse("d8eb3709-3e11-4dd7-a02c-6e54dd6e6575"),
+                        DateOfBirth = new DateTime(1978, 3, 20),
+                        Email = "michael.johnson@example.com",
+                        Gender = GenderOptions.Male.ToString(),
+                        ReceiveNewLetters = true
+                    },
+                    new Person()
+                    {
+                        PersonID = Guid.Parse("d8eb3709-3e11-4dd7-a02c-6e54dd6e6575"),
+                        PersonName = "Emily Davis",
+                        Address = "321 Pine St",
+                        CountryID = Guid.Parse("c7a8b3d2-f1c2-4971-b7bb-dcbb24a9e731"),
+                        DateOfBirth = new DateTime(1995, 12, 3),
+                        Email = "emily.davis@example.com",
+                        Gender = GenderOptions.Female.ToString(),
+                        ReceiveNewLetters = false
+                    },
+                    new Person()
+                    {
+                        PersonID = Guid.Parse("c7a8b3d2-f1c2-4971-b7bb-dcbb24a9e731"),
+                        PersonName = "Chris Wilson",
+                        Address = "987 Maple St",
+                        CountryID = Guid.Parse("6d206107-4e43-4468-b8f1-d3455ed6f5e0"),
+                        DateOfBirth = new DateTime(1982, 8, 12),
+                        Email = "chris.wilson@example.com",
+                        Gender = GenderOptions.Male.ToString(),
+                        ReceiveNewLetters = true
+                    },
+                    new Person()
+                    {
+                        PersonID = Guid.Parse("6d206107-4e43-4468-b8f1-d3455ed6f5e0"),
+                        PersonName = "Emma Anderson",
+                        Address = "654 Cedar St",
+                        CountryID = Guid.Parse("a1e601e5-119a-4777-ae15-94e5b8eaf118"),
+                        DateOfBirth = new DateTime(1993, 6, 25),
+                        Email = "emma.anderson@example.com",
+                        Gender = GenderOptions.Female.ToString(),
+                        ReceiveNewLetters = false
+                    },
+                    new Person()
+                    {
+                        PersonID = Guid.Parse("a1e601e5-119a-4777-ae15-94e5b8eaf118"),
+                        PersonName = "Matthew Taylor",
+                        Address = "852 Birch St",
+                        CountryID = Guid.Parse("bd8f3a91-c1db-4c62-aa8f-6fd9b5e9a09d"),
+                        DateOfBirth = new DateTime(1975, 9, 18),
+                        Email = "matthew.taylor@example.com",
+                        Gender = GenderOptions.Male.ToString(),
+                        ReceiveNewLetters = true
+                    },
+                    new Person()
+                    {
+                        PersonID = Guid.Parse("bd8f3a91-c1db-4c62-aa8f-6fd9b5e9a09d"),
+                        PersonName = "Olivia Martinez",
+                        Address = "369 Walnut St",
+                        CountryID = Guid.Parse("6aebcd10-2c68-4211-8e34-9d69fda4d63d"),
+                        DateOfBirth = new DateTime(1988, 11, 30),
+                        Email = "olivia.martinez@example.com",
+                        Gender = GenderOptions.Female.ToString(),
+                        ReceiveNewLetters = true
+                    },
+                    new Person()
+                    {
+                        PersonID = Guid.Parse("6aebcd10-2c68-4211-8e34-9d69fda4d63d"),
+                        PersonName = "David Brown",
+                        Address = "147 Pine St",
+                        CountryID = Guid.Parse("2a8cbf0d-dad0-4d13-925f-7c1e152df715"),
+                        DateOfBirth = new DateTime(1980, 4, 10),
+                        Email = "david.brown@example.com",
+                        Gender = GenderOptions.Male.ToString(),
+                        ReceiveNewLetters = false
+                    }
+                });
+
+            }
         }
 
         private PersonResponse ConvertPersonToPersonResponse(Person person)
@@ -89,7 +207,7 @@ namespace ServiceImplementation
             //throw new NotImplementedException();
             if (personId == null)
                 return null;
-            Person? person = _person.FirstOrDefault(x=>x.PersonID == personId);
+            Person? person = _person.FirstOrDefault(x => x.PersonID == personId);
 
             if (person == null)
                 return null;
@@ -120,7 +238,7 @@ namespace ServiceImplementation
                 case nameof(Person.PersonName):
                     matchingPersons = allPersons.Where(
                         x => (
-                            !string.IsNullOrEmpty(x.PersonName) ? 
+                            !string.IsNullOrEmpty(x.PersonName) ?
                             x.PersonName.Contains(SearchString, StringComparison.OrdinalIgnoreCase) :
                             true
                        )).ToList();
@@ -128,7 +246,7 @@ namespace ServiceImplementation
                 case nameof(Person.Email):
                     matchingPersons = allPersons.Where(
                         x => (
-                            !string.IsNullOrEmpty(x.Email) ? 
+                            !string.IsNullOrEmpty(x.Email) ?
                             x.PersonName.Contains(SearchString, StringComparison.OrdinalIgnoreCase) :
                             true
                        )).ToList();
@@ -136,8 +254,8 @@ namespace ServiceImplementation
 
                 case nameof(Person.DateOfBirth):
                     matchingPersons = allPersons.Where(
-                        x => 
-                            (x.DateOfBirth!=null) ?
+                        x =>
+                            (x.DateOfBirth != null) ?
                             x.DateOfBirth.Value.ToString("dd MMMM yyyy").Contains(SearchString, StringComparison.OrdinalIgnoreCase) :
                             true
                        ).ToList();
@@ -218,7 +336,7 @@ namespace ServiceImplementation
 
             //get matching person
             Person? matchingPerson = _person.FirstOrDefault(temp => temp.PersonID == update.PersonId);
-            if(matchingPerson == null)
+            if (matchingPerson == null)
             {
                 throw new ArgumentException("Givin person id dosen't match");
             }
@@ -248,7 +366,7 @@ namespace ServiceImplementation
             if (person == null)
                 return false;
 
-            _person.RemoveAll(temp=>temp.PersonID == PersonID);
+            _person.RemoveAll(temp => temp.PersonID == PersonID);
             return true;
         }
         #endregion
