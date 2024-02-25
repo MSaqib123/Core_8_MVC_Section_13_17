@@ -240,7 +240,16 @@ namespace ServiceImplementation
         #region Delete
         public bool DeletePerson(Guid? PersonID)
         {
-            throw new NotImplementedException();
+            if (PersonID == null)
+                throw new ArgumentNullException(nameof(PersonID));
+
+            Person? person = _person.FirstOrDefault(temp => temp.PersonID == PersonID);
+
+            if (person == null)
+                return false;
+
+            _person.RemoveAll(temp=>temp.PersonID == PersonID);
+            return true;
         }
         #endregion
 
