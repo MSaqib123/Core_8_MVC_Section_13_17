@@ -1,7 +1,13 @@
+using ServiceImplementation;
+using Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddSingleton<IPersonService, PersonService>();
+builder.Services.AddSingleton<ICountiesService, CountriesService>();
 
 var app = builder.Build();
 
