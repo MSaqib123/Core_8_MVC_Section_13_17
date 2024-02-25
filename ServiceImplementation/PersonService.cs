@@ -202,7 +202,38 @@ namespace ServiceImplementation
 
         public PersonResponse UpdatePerson(PersonUpdateRequest update)
         {
-            throw new NotImplementedException();
+            //check if "PersonUpdate" is null
+            //validate all peroperties 
+            //get the matching Person base on ID
+            //check if matching Person object is not null
+            //update all details from "PersonUpdateRequst" object to Person object
+            //convert the person from Person to PersonResposne type
+            //return  PersonResponse object with dublicate details
+
+            if (update == null)
+                throw new ArgumentNullException(nameof(Person));
+
+            //validation
+            ValidationHelper.ModelValidation(update);
+
+            //get matching person
+            Person? matchingPerson = _person.FirstOrDefault(temp => temp.PersonID == update.PersonId);
+            if(matchingPerson == null)
+            {
+                throw new ArgumentException("Givin person id dosen't match");
+            }
+
+            //update all Detal
+            matchingPerson.PersonName = update.PersonName;
+            matchingPerson.Address = update.Address;
+            matchingPerson.CountryID = update.CountryID;
+            matchingPerson.DateOfBirth = update.DateOfBirth;
+            matchingPerson.Email = update.Email;
+            matchingPerson.Gender = update.Gender.ToString();
+            matchingPerson.PersonID = update.PersonId;
+            matchingPerson.ReceiveNewLetters = update.ReceiveNewLetters;
+
+            return matchingPerson.ToPersonResponse();
         }
         #endregion
     }

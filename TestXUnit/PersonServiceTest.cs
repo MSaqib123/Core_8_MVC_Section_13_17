@@ -505,7 +505,7 @@ namespace TestXUnit
             PersonUpdateRequest? Person_update_request = null;
 
             //Assert
-            Assert.Throws<ArgumentException>(() =>
+            Assert.Throws<ArgumentNullException>(() =>
             {
                 //act
                 _personService.UpdatePerson(Person_update_request);
@@ -539,7 +539,13 @@ namespace TestXUnit
 
             PersonAddRequest? Person_add_request = new PersonAddRequest()
             {
-                PersonName = "Boota", CountryID = country_response_from_add.CountryId
+                PersonName = "Boota",
+                CountryID = country_response_from_add.CountryId,
+                Email = "m43577535@gmail.com",
+                Gender = GenderOptions.Male,
+                Address = "sdfsdf",
+                DateOfBirth = DateTime.Now,
+                ReceiveNewLetters = true,
             };
 
             PersonResponse person_Response_from_Add = _personService.AddPerson(Person_add_request);
