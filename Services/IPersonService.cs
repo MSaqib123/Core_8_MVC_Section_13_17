@@ -50,5 +50,13 @@ namespace Services
 
 
         PersonResponse UpdatePerson(PersonUpdateRequest update);
+
+        /// <summary>
+        /// Delee
+        /// </summary>
+        /// <param name="PersonID"></param>
+        /// <returns></returns>
+        bool DeletePerson(Guid? PersonID);
+
     }
 }

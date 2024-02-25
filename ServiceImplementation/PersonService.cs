@@ -236,5 +236,13 @@ namespace ServiceImplementation
             return matchingPerson.ToPersonResponse();
         }
         #endregion
+
+        #region Delete
+        public bool DeletePerson(Guid? PersonID)
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
+
     }
 }

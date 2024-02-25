@@ -497,7 +497,7 @@ namespace TestXUnit
         #endregion
 
         //________ Update Perosn __________
-        #region Update-person
+        #region Update_person
         [Fact]
         public void UpdatePerson_NullPerson()
         {
@@ -594,5 +594,44 @@ namespace TestXUnit
             Assert.Equal(personResponse_from_get, personResponse_fromUpdate);
         }
         #endregion
+
+
+        //________ Delete Perosn __________
+        [Fact]
+        public void DeletePerson_ValidPersonId()
+        {
+            //Arrange
+            CountryAddRequest country_response_req = new CountryAddRequest()
+            {
+                CountryName = "UK",
+            };
+            CountryResponse country_response_from_add = _countryService.AddCountry(country_response_req);
+
+            PersonAddRequest? Person_add_request = new PersonAddRequest()
+            {
+                PersonName = "Boota",
+                CountryID = country_response_from_add.CountryId,
+                Address = "a",
+                DateOfBirth = DateTime.Now,
+                Email = "pk@gmail.com",
+                Gender = GenderOptions.Male,
+                ReceiveNewLetters = true
+            };
+
+            PersonResponse person_Response_from_Add = _personService.AddPerson(Person_add_request);
+
+            //Act
+            bool isDeleted = _personService.DeletePerson(person_Response_from_Add.PersonID);
+
+            Assert.True(isDeleted);
+        }
+        [Fact]
+        public void DeletePerson_InvalidPersonId()
+        {
+            //Act
+            bool isDeleted = _personService.DeletePerson(Guid.NewGuid());
+
+            Assert.False(isDeleted);
+        }
     }
 }
