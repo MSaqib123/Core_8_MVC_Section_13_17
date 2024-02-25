@@ -156,7 +156,45 @@ namespace ServiceImplementation
         #region SortedPerson
         public List<PersonResponse> GetSortedPersons(List<PersonResponse> allPersons, string SortBy, SortOrderOptions sortOrder)
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrEmpty(SortBy))
+                return allPersons;
+
+            List<PersonResponse> sortedPersons = (SortBy, sortOrder)
+            switch
+            {
+                (nameof(PersonResponse.PersonName), SortOrderOptions.ASC)
+                => allPersons.OrderBy(temp => temp.PersonName, StringComparer.OrdinalIgnoreCase).ToList(),
+                (nameof(PersonResponse.PersonName), SortOrderOptions.DESC)
+                => allPersons.OrderByDescending(temp => temp.PersonName, StringComparer.OrdinalIgnoreCase).ToList(),
+
+                (nameof(PersonResponse.Address), SortOrderOptions.ASC)
+                => allPersons.OrderBy(temp => temp.Address, StringComparer.OrdinalIgnoreCase).ToList(),
+                (nameof(PersonResponse.Address), SortOrderOptions.DESC)
+                => allPersons.OrderByDescending(temp => temp.Address, StringComparer.OrdinalIgnoreCase).ToList(),
+
+
+                (nameof(PersonResponse.Gender), SortOrderOptions.ASC)
+                => allPersons.OrderBy(temp => temp.Gender, StringComparer.OrdinalIgnoreCase).ToList(),
+                (nameof(PersonResponse.Gender), SortOrderOptions.DESC)
+                => allPersons.OrderByDescending(temp => temp.Gender, StringComparer.OrdinalIgnoreCase).ToList(),
+
+                (nameof(PersonResponse.Country), SortOrderOptions.ASC)
+                => allPersons.OrderBy(temp => temp.Country, StringComparer.OrdinalIgnoreCase).ToList(),
+                (nameof(PersonResponse.Country), SortOrderOptions.DESC)
+                => allPersons.OrderByDescending(temp => temp.Country, StringComparer.OrdinalIgnoreCase).ToList(),
+
+                (nameof(PersonResponse.DateOfBirth), SortOrderOptions.ASC)
+                => allPersons.OrderBy(temp => temp.DateOfBirth).ToList(),
+                (nameof(PersonResponse.DateOfBirth), SortOrderOptions.DESC)
+                => allPersons.OrderByDescending(temp => temp.DateOfBirth).ToList(),
+
+                (nameof(PersonResponse.Age), SortOrderOptions.ASC)
+                => allPersons.OrderBy(temp => temp.Age).ToList(),
+                (nameof(PersonResponse.Age), SortOrderOptions.DESC)
+                => allPersons.OrderByDescending(temp => temp.Age).ToList(),
+            };
+
+            return sortedPersons;
         }
         #endregion
 
