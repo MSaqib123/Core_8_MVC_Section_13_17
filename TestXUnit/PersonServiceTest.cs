@@ -468,14 +468,14 @@ namespace TestXUnit
             {
                 _testOutputHelper.WriteLine(item.ToString());
             }
+
             //Print _personService.GetAllPersons()
             List<PersonResponse> allPersons = _personService.GetAllPersons();
-            List<PersonResponse> personList_from_Sort = _personService
-                    .GetSortedPersons(
-                            allPersons,
-                            nameof(Person.PersonName),
-                            SortOrderOptions.DESC
-                     );
+            List<PersonResponse> personList_from_Sort = _personService.GetSortedPersons(
+                        allPersons,
+                        nameof(Person.PersonName),
+                        SortOrderOptions.DESC
+                  );
 
             _testOutputHelper.WriteLine("Actual: ");
             foreach (var item in personList_from_Sort)
@@ -483,19 +483,14 @@ namespace TestXUnit
                 _testOutputHelper.WriteLine(item.ToString());
             }
 
-           
-            //assert
-            foreach (PersonResponse person_response_from_add in personResponses_List)
-            {
-                if (person_response_from_add.PersonName != null)
-                {
-                    if (person_response_from_add.PersonName.Contains("ma", StringComparison.OrdinalIgnoreCase))//in contain case is not matter
-                    {
-                        Assert.Contains(person_response_from_add, personList_from_Search);
-                    }
-                }
-            }
 
+            personResponses_List = personResponses_List.OrderByDescending(x => x.PersonName).ToList();
+
+            //assert
+            for (int i = 0; i < personResponses_List.Count; i++)
+            {
+                Assert.Equal(personResponses_List[i], personList_from_Sort[i]);
+            }
             //sir ka Dard ha ya to
         }
         #endregion
