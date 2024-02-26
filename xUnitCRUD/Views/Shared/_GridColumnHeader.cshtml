@@ -2,15 +2,14 @@
 <th>
     @if (ViewBag.SortBy == ViewBag.ColumnName && ViewBag.sortOrder == SortOrderOptions.ASC.ToString())
     {
-        <a href="~/Person/PersonList?searchBy=@ViewBag.CurrentSearchBy&searchString=@ViewBag.CurrentSearchString&sortBy=@nameof(PersonResponse.PersonName)&sortOrder=DESC">Person Name <i class="fa-solid fa-sort-up"></i></a>
+        <a href="~/Person/PersonList?searchBy=@(ViewBag.CurrentSearchBy)&searchString=@(ViewBag.CurrentSearchString)&sortBy=@(ViewBag.ColumnName)&sortOrder=DESC">@ViewBag.DisplayName<i class="fa-solid fa-sort-up"></i></a>
     }
-    else if (ViewBag.SortBy == nameof(PersonResponse.PersonName) && ViewBag.sortOrder == SortOrderOptions.DESC.ToString())
+    else if (ViewBag.SortBy == ViewBag.DisplayName && ViewBag.sortOrder == SortOrderOptions.DESC.ToString())
     {
-        <a href="~/Person/PersonList?searchBy=@ViewBag.CurrentSearchBy&searchString=@ViewBag.CurrentSearchString&sortBy=@nameof(PersonResponse.PersonName)&sortOrder=ASC">Person Name <i class="fa-solid fa-sort-down"></i></a>
+        <a href="~/Person/PersonList?searchBy=@(ViewBag.CurrentSearchBy)&searchString=@(ViewBag.CurrentSearchString)&sortBy=@(ViewBag.ColumnName)&sortOrder=ASC">@ViewBag.DisplayName <i class="fa-solid fa-sort-down"></i></a>
     }
     else
     {
-        //Other then PerosnName then
-        <a href="~/Person/PersonList?searchBy=@ViewBag.CurrentSearchBy&searchString=@ViewBag.CurrentSearchString&sortBy=@nameof(PersonResponse.PersonName)&sortOrder=ASC">Person Name <i class="fa-solid fa-sort-down"></i></a>
+        <a href="~/Person/PersonList?searchBy=@(ViewBag.CurrentSearchBy)&searchString=@(ViewBag.CurrentSearchString)&sortBy=@(ViewBag.ColumnName)&sortOrder=ASC">@ViewBag.DisplayName<i class="fa-solid fa-sort-down"></i></a>
     }
 </th>
