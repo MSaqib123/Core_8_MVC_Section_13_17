@@ -196,7 +196,8 @@ namespace ServiceImplementation
         public List<PersonResponse> GetAllPersons()
         {
             //throw new NotImplementedException();
-            List<PersonResponse> listPersonResponse = _person.Select(x => x.ToPersonResponse()).ToList();
+            List<PersonResponse> listPersonResponse = 
+                _person.Select(x => ConvertPersonToPersonResponse(x)).ToList();
             return listPersonResponse;
         }
         #endregion
