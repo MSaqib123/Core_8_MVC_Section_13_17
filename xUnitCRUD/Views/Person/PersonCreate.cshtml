@@ -1,4 +1,5 @@
-﻿@model PersonAddRequest
+﻿@using Services.Enums;
+@model PersonAddRequest
 
 <form asp-action="PersonCreate" asp-controller="Person">
     <div class="container">
@@ -36,6 +37,7 @@
                         <label>Gender</label>
                     </div>
                     <div class="col-6">
+                       @*
                         <input type="radio" asp-for="Gender" value="Male" id="genderMale" />
                         <label for="genderMale" class="me-2">Male</label>
 
@@ -44,7 +46,15 @@
 
                         <input type="radio" asp-for="Gender" value="Other" id="genderOther" />
                         <label for="genderOther" class="me-2">Other</label>
-
+                       *@
+                        @{
+                            string[] genders = (string[])Enum.GetNames(typeof(GenderOptions));
+                            foreach (var gender in genders)
+                            {
+                                <input type="radio" asp-for="Gender" value="@gender" id="genderOther" />
+                                <label for="@gender" class="me-2">@gender</label>
+                            }
+                        }
                     </div>
                 </div>
                 <div class="row mb-3">
