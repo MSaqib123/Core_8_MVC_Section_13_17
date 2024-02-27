@@ -62,12 +62,15 @@
                         <label>Country</label>
                     </div>
                     <div class="col-6">
-                        <select class="form-select" asp-for="CountryID">
+                        <select class="form-select" asp-for="CountryID" asp-items="@ViewBag.Countries">
                             <option>Please Select</option>
+                            @*
+                                
                             @foreach (var country in ViewBag.Countries)
                             {
                                 <option value="@country.CountryId">@country.CountryName</option>
                             }
+                            *@
                         </select>
                     </div>
                 </div>

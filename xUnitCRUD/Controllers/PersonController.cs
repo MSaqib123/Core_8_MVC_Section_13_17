@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Services;
 using Services.DTO;
 using Services.Enums;
@@ -53,7 +54,13 @@ namespace xUnitCRUD.Controllers
         {
             var model = new PersonAddRequest();
             List<CountryResponse> list = _countiesService.GetAllCountries();
-            ViewBag.Countries = list;
+            //ViewBag.Countries = list;
+            ViewBag.Countries = list.Select(x => new SelectListItem()
+            {
+                Text = x.CountryName,
+                Value = x.CountryId.ToString(),
+
+            });
             return View(model);
         }
         [HttpPost]
