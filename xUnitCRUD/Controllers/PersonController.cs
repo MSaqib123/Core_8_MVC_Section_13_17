@@ -45,5 +45,12 @@ namespace xUnitCRUD.Controllers
 
             return View(response);
         }
+
+
+        public IActionResult PersonCreate()
+        {
+            var model = new PersonAddRequest();
+            return View(model);
+        }
     }
 }

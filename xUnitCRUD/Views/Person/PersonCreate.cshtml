@@ -1,0 +1,78 @@
+﻿@model PersonAddRequest
+
+<div class="container">
+    <div class="row mb-3">
+        <div class="col-12">
+            <div class="row mb-3">
+                <h2>Create Person</h2>
+            </div>
+            <div class="row mb-3">
+                <div class="col-2">
+                    <label>Person Name</label>
+                </div>
+                <div class="col-6">
+                    <input class="form-control" type="text" asp-for="PersonName" />
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-2">
+                    <label>Email</label>
+                </div>
+                <div class="col-6">
+                    <input class="form-control" type="text" asp-for="PersonName" />
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-2">
+                    <label>Date of Birth</label>
+                </div>
+                <div class="col-6">
+                    <input class="form-control" type="date" asp-for="PersonName" />
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-2">
+                    <label>Gender</label>
+                </div>
+                <div class="col-6">
+                    <input class="form-control" type="radio" asp-for="PersonName" />
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-2">
+                    <label>Country</label>
+                </div>
+                <div class="col-6">
+                    <select class="form-select">
+                        <option>Please Select</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-2">
+                    <label>Address</label>
+                </div>
+                <div class="col-6">
+                        <textarea asp-for="Address" class="form-control"></textarea>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-2">
+                    <label>Receve News Letter</label>
+                </div>
+                <div class="col-6">
+                    <textarea asp-for="Address" class="form-control"></textarea>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-2">
+                </div>
+                <div class="col-6">
+                    <button class="btn btn-primary">Create</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
