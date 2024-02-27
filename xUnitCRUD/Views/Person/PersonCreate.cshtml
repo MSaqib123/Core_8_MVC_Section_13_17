@@ -1,5 +1,8 @@
 ﻿@model PersonAddRequest
 
+<form>
+
+
 <div class="container">
     <div class="row mb-3">
         <div class="col-12">
@@ -35,7 +38,14 @@
                     <label>Gender</label>
                 </div>
                 <div class="col-6">
-                    <input class="form-control" type="radio" asp-for="PersonName" />
+                    <input type="radio" asp-for="Gender" value="Male" id="genderMale" />
+                    <label for="genderMale" class="me-2">Male</label>
+
+                    <input type="radio" asp-for="Gender" value="Female" id="genderFemale" />
+                    <label for="genderFemale" class="me-2">Female</label>
+
+                    <input type="radio" asp-for="Gender" value="Other" id="genderOther" />
+                    <label for="genderOther" class="me-2">Other</label>
                 </div>
             </div>
             <div class="row mb-3">
@@ -43,8 +53,12 @@
                     <label>Country</label>
                 </div>
                 <div class="col-6">
-                    <select class="form-select">
+                    <select class="form-select" asp-for="CountryID">
                         <option>Please Select</option>
+                        @foreach (var country in ViewBag.Countries)
+                        {
+                            <option value="@country.CountryId">@country.CountryName</option>
+                        }
                     </select>
                 </div>
             </div>
@@ -53,7 +67,7 @@
                     <label>Address</label>
                 </div>
                 <div class="col-6">
-                        <textarea asp-for="Address" class="form-control"></textarea>
+                     <textarea asp-for="Address" class="form-control"></textarea>
                 </div>
             </div>
             <div class="row mb-3">
@@ -61,7 +75,7 @@
                     <label>Receve News Letter</label>
                 </div>
                 <div class="col-6">
-                    <textarea asp-for="Address" class="form-control"></textarea>
+                    <input type="checkbox" asp-for="ReceiveNewLetters"/>
                 </div>
             </div>
 
@@ -69,10 +83,12 @@
                 <div class="col-2">
                 </div>
                 <div class="col-6">
-                    <button class="btn btn-primary">Create</button>
+                    <button class="btn btn-primary" type="submit">Create</button>
                 </div>
             </div>
 
         </div>
     </div>
 </div>
+
+</form>

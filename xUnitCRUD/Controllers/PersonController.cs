@@ -8,9 +8,11 @@ namespace xUnitCRUD.Controllers
     public class PersonController : Controller
     {
         private readonly IPersonService _IPersonService;
-        public PersonController(IPersonService IPersonService)
+        private readonly ICountiesService _countiesService;
+        public PersonController(IPersonService IPersonService,ICountiesService countiesService)
         {
             _IPersonService = IPersonService;
+            _countiesService = countiesService;
         }
 
         public IActionResult PersonList(
@@ -50,7 +52,17 @@ namespace xUnitCRUD.Controllers
         public IActionResult PersonCreate()
         {
             var model = new PersonAddRequest();
+            List<CountryResponse> list = _countiesService.GetAllCountries();
+            ViewBag.Countries = list;
             return View(model);
+        }
+        [HttpPost]
+        public IActionResult PersonCreate(PersonAddRequest model)
+        {
+            var addingPerson = _IPersonService.AddPerson(model);
+            List<CountryResponse> list = _countiesService.GetAllCountries();
+            ViewBag.Countries = list;
+            return RedirectToAction(nameof(PersonCreate));
         }
     }
 }
