@@ -59,10 +59,18 @@ namespace xUnitCRUD.Controllers
         [HttpPost]
         public IActionResult PersonCreate(PersonAddRequest model)
         {
-            var addingPerson = _IPersonService.AddPerson(model);
-            List<CountryResponse> list = _countiesService.GetAllCountries();
-            ViewBag.Countries = list;
-            return RedirectToAction(nameof(PersonCreate));
+            if (!ModelState.IsValid)
+            {
+                List<CountryResponse> list = _countiesService.GetAllCountries();
+                ViewBag.Countries = list;
+                ViewBag.Errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage).ToList();
+                return View(model);
+            }
+            else
+            {
+                var addingPerson = _IPersonService.AddPerson(model);
+                return RedirectToAction(nameof(PersonCreate));
+            }
         }
     }
 }
