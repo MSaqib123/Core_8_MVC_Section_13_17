@@ -65,10 +65,10 @@
                         <select class="form-select" asp-for="CountryID" asp-items="@ViewBag.Countries">
                             <option>Please Select</option>
                             @*
-                                
+
                             @foreach (var country in ViewBag.Countries)
                             {
-                                <option value="@country.CountryId">@country.CountryName</option>
+                            <option value="@country.CountryId">@country.CountryName</option>
                             }
                             *@
                         </select>
